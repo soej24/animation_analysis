@@ -1,0 +1,13 @@
+Name, Alternative Name, Rating Score(평가점수), Anime-Planet, Number Votes(숫자투표), tags(태그), Content Warning, Type, 
+Episodes(에피소드), Finished(완성된), Duration(지속), StartYear(시작년도), EndYear(마지막연도), Season(계절), Studios(스튜디오),
+Synopsis(개요), Url	
+
+
+애니메이션 검색 및 평가점수 분석 앱
+
+프로젝트 이름 animation_analysis
+장르 : Comedy(코메디), Drama(드라마), Sports(스포츠), Mecha(메카),Monsters(몬스터), Psychological(심리적), Action(액션),
+Sci Fi(공상 과학), Tsundere(츤데레), Romance(로맨스), Chinese Animation(중국 애니), School Life(학교 생활), Short Episodes(짧은 에피소드)
+Work Life(직장생활), Family(가족), Fantasy(판타지),  Anima(동물), Demons(악마), Zombies(좀비), Horror(공포), Adventure(어드밴처)
+
+
