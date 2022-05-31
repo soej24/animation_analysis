@@ -71,7 +71,27 @@ def main() :
     df_result= df.loc[ (df['Tags'].str.contains(choice_list)) & (df['Type'].str.contains(type)) & (df['Rating Score'] == 5.0), ]
     st.dataframe(df_result)
 
+    st.markdown("***")
+    st.text('전체 리스트 들어가는 부분')
 
+    st.markdown("***")
+    st.text('선택한 애니 동영상')
+    st.text('선택한 애니 소개글')
+
+    st.markdown("***")
+    st.text("투표를 가장 적게 한 애니")
+
+    st.markdown("***")
+    st.text('투표를 가장 많아한 애니')
+
+    st.markdown("***")
+    st.text('차트')
+
+    st.markdown("***")  
+    st.text('투표에 따른 총점 상관관계')
+
+    st.markdown("***") 
+    st.text('영화를 선택하면 그것이 긍정인지 부정인지')
 
     with col3 :
         st.text('여기는 세번째')
