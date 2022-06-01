@@ -1,82 +1,106 @@
+from tkinter.tix import COLUMN
+from pyparsing import empty
 import streamlit as st
 import numpy as np
 import pandas as pd
 from PIL import Image
 
-# col1, col2 = st.columns([3, 1])
-col3, col4 = st.columns(2)
+st.set_page_config(layout="wide")
+sp1,con1,sp2 = st.columns([0.3,1.0,0.3])
+sp1,con2,con3,sp2 = st.columns([0.3,0.5,0.5,0.3])
+sp1,con4,sp2 = st.columns([0.3,1.0,0.3])
+sp1,con5,con6,sp2 = st.columns([0.3,0.5,0.5,0.3])
+sp1,con7,sp3 = st.columns([0.3,1.0,0.3])
 
 def main() :
 
-    #with col1 :
-    df = pd.read_csv('data/anime.csv', encoding='UTF-8')
-    df['Rating Score'] = df['Rating Score'].apply (int)
+    with sp1 :
+        empty()
+   
+    with con1 :
+        df = pd.read_csv('data/anime.csv', index_col = 'Anime-PlanetID', encoding='UTF-8')
+        df['Rating Score'] = df['Rating Score'].apply (int)
 
-    st.title('애니메이션 검색 및 분석')
-    st.markdown("***")
-    st.text('동영상 들어갈 부분')
-    st.video("https://youtu.be/Dqe0uuH8yi0")
+        st.title('애니메이션 검색 및 분석')
+        st.markdown("***")
+        st.video("https://youtu.be/Dqe0uuH8yi0")
 
-    tags = ['Action', 'Adventure', 'Comedy', 'Drama', 'Sports', 'Mecha','Romance', 'Fantasy', 'Horror',\
-                'Sci Fi', 'School Life','Work Life', 'Family','Short Episodes']
-    st.markdown("***")
-    choice_list = st.selectbox('장르를 선택하세요!', tags)
+    with con2 :
+        tags = ['Action', 'Adventure', 'Comedy', 'Drama', 'Sports', 'Mecha','Romance', 'Fantasy', 'Horror',\
+                    'Sci Fi', 'School Life','Work Life', 'Family','Short Episodes']
+        st.markdown("***")
+        choice_list = st.selectbox('장르를 선택하세요!', tags)
 
-    # if choice_list != 'close' :
-    #     result2 = df.loc[ df['Tags'].str.contains(choice_list), ]
-    #     st.dataframe( result2 )
+        st.markdown("***")
+        score = st.radio(label = '평점을 선택하세요!', options = ['5점', '4점', '3점', '2점', '1점'])
+        st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
 
-    score = st.radio(label = '평점을 선택하세요!', options = ['5점', '4점', '3점', '2점', '1점'])
-    st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
+        type = st.radio(label = '타입을 선택하세요!', options = ['TV', 'Music', 'Web', 'Other', 'Movie', 'DVD'])
+        st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
 
-    # if score != 'close' :       
-        
-    #     if score == '5점' :
-    #         score = 5.0
+    with con3 :
+     
+        if score == '5점' :
+            score_last = 5.0
 
-    #     if score == '4점' :
-    #         score = 4.0
+        if score == '4점' :
+            score_last = 4.0
 
-    #     if score == '3점' :
-    #         score = 3.0
+        if score == '3점' :
+            score_last = 3.0
 
-    #     if score == '2점' :
-    #         score = 2.0
+        if score == '2점' :
+            score_last = 2.0
 
-    #     if score == '1점' :
-    #         score = 1.0
+        if score == '1점' :
+            score_last = 1.0     
 
-    #     result3 = df.loc[ df['Rating Score'] == score, ]
-    #     st.dataframe( result3 )
+        st.markdown("***")
+        df_result= df.loc[ df['Tags'].str.contains(choice_list) & (df['Type'] == type) & (df['Rating Score'] == score_last), ]
+        st.dataframe(df_result)
 
-    type = st.radio(label = '타입을 선택하세요!', options = ['TV', 'Music', 'Web', 'Other', 'Movie', 'DVD'])
-    st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
+    with con4 :
+        st.markdown("***")
+        st.subheader('내가 보고싶은 애니는?')
+        column_name = sorted(list(df_result['Name'].unique()))
+        # st.text(column_name)
+        choice_list2 = st.selectbox('애니를 선택해 주세요!!', column_name)
 
-    if score == '5점' :
-        score = 5.0
+        # 진열이가 가르켜준 코드
+        # unique로 뽑으면 넘파이 array로 나와서 그걸 다시
+        # 리스트로 바꿔서 저장해줘야 한다.
+        # df1 = sorted(list(df['제조사명'].unique()))
+        # choice = st.sidebar.selectbox('브랜드 선택', df1)
 
-    if score == '4점' :
-        score = 4.0
+        st.text(choice_list2)
+        df_choice = df.loc[ df['Name'] == choice_list2, ]
+        st.dataframe(df_choice)
+        st.markdown("***")
 
-    if score == '3점' :
-        score = 3.0
+    with con5 :
 
-    if score == '2점' :
-        score = 2.0
+         st.text('선택한 애니 동영상')    
+     
+    with con6 :
 
-    if score == '1점' :
-        score = 1.0
+        title_name = list(df_choice['Name'].unique())
+        title_name = ' '.join(s for s in title_name)
+        st.subheader(title_name)
+ 
+        content = list(df_choice['Synopsis'].unique())
+        content = ' '.join(s for s in content)
+        st.markdown(content)
 
-    st.markdown("***")
-    df_result= df.loc[ (df['Tags'].str.contains(choice_list)) & (df['Type'].str.contains(type)) & (df['Rating Score'] == 5.0), ]
-    st.dataframe(df_result)
+        url = list(df_choice['Url'].unique())
+        url = ' '.join(s for s in url)
+        link = url
+        st.markdown(link, unsafe_allow_html=True)  
+        st.markdown("***")
+    
+    with con7 :
+        st.text(content)
+        st.markdown(content)
 
-    st.markdown("***")
-    st.text('전체 리스트 들어가는 부분')
-
-    st.markdown("***")
-    st.text('선택한 애니 동영상')
-    st.text('선택한 애니 소개글')
 
     st.markdown("***")
     st.text("투표를 가장 적게 한 애니")
@@ -93,10 +117,7 @@ def main() :
     st.markdown("***") 
     st.text('영화를 선택하면 그것이 긍정인지 부정인지')
 
-    with col3 :
-        st.text('여기는 세번째')
-    with col4 :
-        st.text('여기는 네번째')
+
 
     
 
