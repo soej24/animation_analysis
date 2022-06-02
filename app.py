@@ -1,3 +1,4 @@
+from os import access
 from tkinter.tix import COLUMN
 from pyparsing import empty
 import streamlit as st
@@ -98,8 +99,10 @@ def main() :
         st.markdown("***")
     
     with con7 :
-        st.text(content)
-        st.markdown(content)
+        st.text('빈화면')
+        df_list = df = df.sort_index(ascending=True)
+        st.dataframe(df_list)
+
 
 
     st.markdown("***")
