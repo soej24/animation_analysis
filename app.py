@@ -57,6 +57,7 @@ def main() :
 
         st.markdown("***")
         df_result= df.loc[ df['Tags'].str.contains(choice_list) & (df['Type'] == type) & (df['Rating Score'] == score_last), ]
+        df_result = df_result.sort_index(ascending=False)
         st.dataframe(df_result)
 
     with con4 :
@@ -72,7 +73,7 @@ def main() :
         # df1 = sorted(list(df['제조사명'].unique()))
         # choice = st.sidebar.selectbox('브랜드 선택', df1)
 
-        st.text(choice_list2)
+        # st.text(choice_list2)
         df_choice = df.loc[ df['Name'] == choice_list2, ]
         st.dataframe(df_choice)
         st.markdown("***")
@@ -98,8 +99,9 @@ def main() :
         st.markdown("***")
     
     with con7 :
-        st.text(content)
-        st.markdown(content)
+        df_list = df.sort_index(ascending=False)
+        st.dataframe(df_list)
+    
 
 
     st.markdown("***")
