@@ -23,12 +23,13 @@ def main() :
 
         st.title('애니메이션 검색 및 분석')
         st.markdown("***")
-        st.video("https://youtu.be/Dqe0uuH8yi0")
+        image = Image.open('data/img/main_img.jpg')
+        st.image(image)
+        st.markdown("***")
 
     with con2 :
         tags = ['Action', 'Adventure', 'Comedy', 'Drama', 'Sports', 'Mecha','Romance', 'Fantasy', 'Horror',\
                     'Sci Fi', 'School Life','Work Life', 'Family','Short Episodes']
-        st.markdown("***")
         choice_list = st.selectbox('장르를 선택하세요!', tags)
 
         st.markdown("***")
@@ -55,7 +56,6 @@ def main() :
         if score == '1점' :
             score_last = 1.0     
 
-        st.markdown("***")
         df_result= df.loc[ df['Tags'].str.contains(choice_list) & (df['Type'] == type) & (df['Rating Score'] == score_last), ]
         df_result = df_result.sort_index(ascending=False)
         st.dataframe(df_result)
@@ -80,7 +80,15 @@ def main() :
 
     with con5 :
 
-         st.text('선택한 애니 동영상')    
+        # 선택한 데이터에서 인덱스 id값을 뽑는다.
+        ani_id = df_choice.index[0]
+        # st.text(ani_id)
+
+        df_movie = pd.read_csv('data/ani_link.csv', index_col = 'm_id', encoding='UTF-8')        
+        movie_choice = df_movie.loc[ani_id] # 동영상 id가 애니 id와 같은 데이터를 추출
+        m_url = movie_choice['m_url']
+
+        st.video(m_url) 
      
     with con6 :
 
@@ -96,7 +104,6 @@ def main() :
         url = ' '.join(s for s in url)
         link = url
         st.markdown(link, unsafe_allow_html=True)  
-        st.markdown("***")
     
     with con7 :
         df_list = df.sort_index(ascending=False)
