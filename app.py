@@ -4,6 +4,10 @@ import streamlit as st
 import numpy as np
 import pandas as pd
 from PIL import Image
+import altair as alt
+import matplotlib.pyplot as plt
+import seaborn as sns
+import plotly.express as px
 
 st.set_page_config(layout="wide")
 sp1,con1,sp2 = st.columns([0.3,1.0,0.3])
@@ -120,12 +124,20 @@ def main() :
         vote_min = df.loc[ df['Number Votes'] == df['Number Votes'].min(), ]
         st.dataframe(vote_min)
 
+        st.markdown("***")
+        st.subheader("별점별 투표수 보기 차트")
+
     with con8 :
 
-        st.markdown("***")
-        st.text('차트')
+        fig2 = plt.figure()  
+        sns.countplot(data=df, x='Rating Score')
+        st.pyplot(fig2)
+
 
     with con9 :
+
+        fig =  px.pie(df, names='Rating Score', values='Number Votes', title='별점별 투표수')
+        st.plotly_chart(fig)
 
         st.markdown("***")  
         st.text('투표에 따른 총점 상관관계')
