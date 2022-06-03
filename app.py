@@ -10,7 +10,8 @@ sp1,con1,sp2 = st.columns([0.3,1.0,0.3])
 sp1,con2,con3,sp2 = st.columns([0.3,0.5,0.5,0.3])
 sp1,con4,sp2 = st.columns([0.3,1.0,0.3])
 sp1,con5,con6,sp2 = st.columns([0.3,0.5,0.5,0.3])
-sp1,con7,sp3 = st.columns([0.3,1.0,0.3])
+sp1,con7,sp2 = st.columns([0.3,1.0,0.3])
+sp1,con8,con9,sp2 = st.columns([0.3,0.5,0.5,0.3])
 
 def main() :
 
@@ -106,41 +107,35 @@ def main() :
         st.markdown(link, unsafe_allow_html=True)  
     
     with con7 :
-        df_list = df.sort_index(ascending=False)
-        st.dataframe(df_list)
-    
+        
+        st.markdown("***")
+        st.subheader("투표를 가장 많이 한 애니")
+
+        vote_max = df.loc[ df['Number Votes'] == df['Number Votes'].max(), ]
+        st.dataframe(vote_max)
+
+        st.markdown("***") 
+        st.subheader("투표를 가장 적게 한 애니")    
+
+        vote_min = df.loc[ df['Number Votes'] == df['Number Votes'].min(), ]
+        st.dataframe(vote_min)
+
+    with con8 :
+
+        st.markdown("***")
+        st.text('차트')
+
+    with con9 :
+
+        st.markdown("***")  
+        st.text('투표에 따른 총점 상관관계')
+
+        st.markdown("***") 
+        st.text('영화를 선택하면 그것이 긍정인지 부정인지')
 
 
-    st.markdown("***")
-    st.text("투표를 가장 적게 한 애니")
-
-    st.markdown("***")
-    st.text('투표를 가장 많아한 애니')
-
-    st.markdown("***")
-    st.text('차트')
-
-    st.markdown("***")  
-    st.text('투표에 따른 총점 상관관계')
-
-    st.markdown("***") 
-    st.text('영화를 선택하면 그것이 긍정인지 부정인지')
-
-
-
-    
-
-    
-
-
-
-
-
-
-    #df = pd.read_csv('data/anime.csv', encoding='UTF-8')
-    #st.dataframe(df)
-
-
+    with sp1 :
+        empty()
 
 if __name__ == '__main__' :
     main()
