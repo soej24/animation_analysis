@@ -63,7 +63,12 @@ def main() :
 
         df_result= df.loc[ df['Tags'].str.contains(choice_list) & (df['Type'] == type) & (df['Rating Score'] == score_last), ]
         df_result = df_result.sort_index(ascending=False)
-        st.dataframe(df_result)
+        if df_result.empty :
+            st.text('')
+            st.text('')                         
+            st.text('검색된 데이터가 없습니다!!')
+        else :
+            st.dataframe(df_result)
 
     with con4 :
         st.markdown("***")
@@ -80,20 +85,27 @@ def main() :
 
         # st.text(choice_list2)
         df_choice = df.loc[ df['Name'] == choice_list2, ]
-        st.dataframe(df_choice)
-        st.markdown("***")
+        if df_choice.empty :
+            st.markdown("***")
+            st.text('검색된 데이터가 없습니다!!')
+        else :
+            st.dataframe(df_choice)
+            st.markdown("***")
 
     with con5 :
 
-        # 선택한 데이터에서 인덱스 id값을 뽑는다.
-        ani_id = df_choice.index[0]
-        # st.text(ani_id)
+        if df_choice.empty :
+            st.text('')
+        else :
+            # 선택한 데이터에서 인덱스 id값을 뽑는다.
+            ani_id = df_choice.index[0]
+            # st.text(ani_id)
 
-        df_movie = pd.read_csv('data/ani_link.csv', index_col = 'm_id', encoding='UTF-8')        
-        movie_choice = df_movie.loc[ani_id] # 동영상 id가 애니 id와 같은 데이터를 추출
-        m_url = movie_choice['m_url']
+            df_movie = pd.read_csv('data/ani_link.csv', index_col = 'm_id', encoding='UTF-8')        
+            movie_choice = df_movie.loc[ani_id] # 동영상 id가 애니 id와 같은 데이터를 추출
+            m_url = movie_choice['m_url']
 
-        st.video(m_url) 
+            st.video(m_url) 
      
     with con6 :
 
