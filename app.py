@@ -149,11 +149,11 @@ def main() :
         fig =  px.pie(df, names='Rating Score', values='Number Votes', title='별점별 투표수')
         st.plotly_chart(fig)
 
-        st.markdown("***")  
-        st.text('투표에 따른 총점 상관관계')
+        # st.markdown("***")  
+        # st.text('투표에 따른 총점 상관관계')
 
-        st.markdown("***") 
-        st.text('영화를 선택하면 그것이 긍정인지 부정인지')
+        # st.markdown("***") 
+        # st.text('영화를 선택하면 그것이 긍정인지 부정인지')
 
 
     with sp1 :
