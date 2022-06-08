@@ -33,8 +33,7 @@ def main() :
         st.markdown("***")
 
     with con2 :
-        tags = ['Action', 'Adventure', 'Comedy', 'Drama', 'Sports', 'Mecha','Romance', 'Fantasy', 'Horror',\
-                    'Sci Fi', 'School Life','Work Life', 'Family','Short Episodes']
+        tags = ['Action', 'Adventure', 'Comedy', 'Drama', 'Sports', 'Mecha','Romance', 'Fantasy', 'Horror','Family']
         choice_list = st.selectbox('장르를 선택하세요!', tags)
 
         st.markdown("***")
