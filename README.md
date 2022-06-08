@@ -5,7 +5,7 @@
 - 투표가 가장 많은 애니
 - 투표가 가장 적은 애니
 <br /><br /><br />
-![title](./data/main_img.jpg)
+![title](./data/img/main_img.jpg)
 <br /><br />
 
 ## 1. 애니메이션 검색
