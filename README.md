@@ -28,6 +28,8 @@
         st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
 
 ```
+<br />
+
 #####  예외처리 후, 데이터가 있으면 보여주는 Code
 ```js
         if df_result.empty :
@@ -37,7 +39,7 @@
         else :
             st.dataframe(df_result)  
 ```
-<br /><br />
+<br />
 
 ## 2. 내가 보고싶은 애니는?
 - 옵션 선택에 따른 애니 리스트를 셀렉트박스로 받아와
