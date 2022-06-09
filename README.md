@@ -1,5 +1,6 @@
 # Animation analysis
 ## (애니메이션 검색 및 분석)
+- 데이터 출처 : https://www.kaggle.com/datasets/hernan4444/anime-recommendation-database-2020
 - 장르, 별점, 타입별 애니검색
 - 관련 오프닝 동영상, 소개, anime-planet 사이트 연결
 - 투표가 가장 많은 애니
