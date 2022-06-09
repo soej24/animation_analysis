@@ -59,18 +59,6 @@
 - 데이터 시각화를 위해 plotly(플로틀리) 사용
 <br />
 
-
-#### 사업장명에서 종목이 구분 안되는 부분 멀티로 예외처리 Code
-```js
-
-```
-
-#### 지도 맵 보여주는 Code
-```js
-
-```
-
-
 ## programming language / graphic tool
 - [ Python ] [ Pandas ] [ Streamlit ] [ AWS ec2 ] [ Visuil Studio Code ] [ Photoshop ]
 <br />
