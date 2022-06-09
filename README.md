@@ -28,8 +28,6 @@
         st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
 
 ```
-<br /><br />
-
 #####  예외처리 후, 데이터가 있으면 보여주는 Code
 ```js
         if df_result.empty :
