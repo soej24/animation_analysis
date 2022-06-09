@@ -15,6 +15,32 @@
 - 옵션 선택에 따른 애니 리스트를 보여줍니다.
 - 데이터가 없는경우 '검색된 데이터가 없습니다' 예외처리
 
+#####  옵션별 선택하는 Code
+```js
+        tags = ['Action', 'Adventure', 'Comedy', 'Drama', 'Sports', 'Mecha','Romance', 'Fantasy', 'Horror','Family']
+        choice_list = st.selectbox('장르를 선택하세요!', tags)
+
+        st.markdown("***")
+        score = st.radio(label = '평점을 선택하세요!', options = ['5점', '4점', '3점', '2점', '1점'])
+        st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
+
+        type = st.radio(label = '타입을 선택하세요!', options = ['TV', 'Music', 'Web', 'Other', 'Movie', 'DVD'])
+        st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
+
+```
+<br /><br />
+
+#####  예외처리 후, 데이터가 있으면 보여주는 Code
+```js
+        if df_result.empty :
+            st.text('')
+            st.text('')                         
+            st.text('검색된 데이터가 없습니다!!')
+        else :
+            st.dataframe(df_result)  
+```
+<br /><br />
+
 ## 2. 내가 보고싶은 애니는?
 - 옵션 선택에 따른 애니 리스트를 셀렉트박스로 받아와
   유저가 원하는 보고싶은 애니를 쉽게 선택할수 있습니다.
@@ -33,19 +59,6 @@
 - 데이터 시각화를 위해 plotly(플로틀리) 사용
 <br />
 
-#####  Code
-```js
-
-```
-<br /><br />
-![title](./data/screenshot01.jpg)
-<br /><br />
-
-#####  Code
-```js
-  
-```
-<br />
 
 #### 사업장명에서 종목이 구분 안되는 부분 멀티로 예외처리 Code
 ```js
