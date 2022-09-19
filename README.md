@@ -64,6 +64,5 @@
 - [ Python ] [ Pandas ] [ Streamlit ] [ AWS ec2 ] [ Visuil Studio Code ] [ Photoshop ]
 <br />
 
-## Link   
-- [🚗 Visit EASYME.md's Repo](https://github.com/soej24/animation_analysis/blob/main/README.md)   
-- [🙋‍♂️ Visit ONE:A's Github](https://github.com/soej24/animation_analysis)
+## URL   
+- http://ec2-13-209-97-184.ap-northeast-2.compute.amazonaws.com:8502/
